@@ -25,7 +25,7 @@ class TRexClient(TRexCommon):
     msg_size = IntParam(default=64)
 
     server_hostname = StrParam(default="localhost")
-    trex_stl_path = 'trex_client/interactive'
+    trex_stl_path = 'trex_client/stl'
 
     def runtime_estimate(self):
         _duration_overhead = 5
@@ -36,8 +36,9 @@ class TRexClient(TRexCommon):
     def run(self):
         sys.path.insert(0, os.path.join(self.params.trex_dir,
                                         self.trex_stl_path))
+        print(sys.path)
 
-        from trex.stl import api as trex_api
+        from trex_stl_lib import api as trex_api
 
         try:
             return self._run(trex_api)
@@ -136,7 +137,7 @@ class TRexServer(TRexCommon):
                     {'src_mac': str(src["mac_addr"]),
                      'dest_mac': str(dst["mac_addr"])})
 
-        with tempfile.NamedTemporaryFile() as cfg_file:
+        with tempfile.NamedTemporaryFile(mode="w+") as cfg_file:
             yaml.dump(trex_server_conf, cfg_file)
             cfg_file.flush()
             os.fsync(cfg_file.file.fileno())

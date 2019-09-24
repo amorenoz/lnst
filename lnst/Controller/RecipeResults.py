@@ -166,7 +166,7 @@ class DeviceMethodCallResult(DeviceConfigResult):
             host=self.device.host.hostid,
             netns=(
                 ".{}".format(self.device.netns.name)
-                if self.device.netns.name
+                if self.device.netns and self.device.netns.name
                 else ""
             ),
             dev_id=self.device._id,

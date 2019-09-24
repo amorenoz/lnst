@@ -39,7 +39,7 @@ class BaseMeasurement(object):
     def __repr__(self):
         return "{}({})".format(
             self.__class__.__name__,
-            repr(self.conf),
+            repr(self.conf) if self.conf else "None",
         )
 
 

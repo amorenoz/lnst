@@ -57,6 +57,8 @@ class RemoteDevice(object):
     def enable_readonly_cache(self):
         self._cache = {}
         for name, val in self:
+            if "coalescing" in name:
+                continue
             self._cache[name] = val
         self._cached = True
 
@@ -145,7 +147,7 @@ class RemoteDevice(object):
 
     def __iter__(self):
         for x in dir(self._dev_cls):
-            if x[0] == '_' or x[0:1] == "__":
+            if x[0] == '_' or x[0:1] == "__" or "coalescing" in x:
                 continue
             attr = getattr(self._dev_cls, x)
 

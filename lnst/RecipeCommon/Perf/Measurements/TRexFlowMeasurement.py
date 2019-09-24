@@ -115,9 +115,9 @@ class TRexFlowMeasurement(BaseFlowMeasurement):
 
         if not job.passed:
             results.generator_results.append(PerfInterval(0, 0, "packets"))
-            results.generator_cpu.append(PerfInterval(0, 0, "cpu_percent"))
+            results.generator_cpu_stats.append(PerfInterval(0, 0, "cpu_percent"))
             results.receiver_results.append(PerfInterval(0, 0, "packets"))
-            results.receiver_cpu.append(PerfInterval(0, 0, "cpu_percent"))
+            results.receiver_cpu_stats.append(PerfInterval(0, 0, "cpu_percent"))
         else:
             prev_time = job.result["start_time"]
             prev_tx_val = 0
