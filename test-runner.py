@@ -14,13 +14,13 @@ from lnst.Controller.RunSummaryFormatter import RunSummaryFormatter
 from lnst.Controller.RecipeResults import ResultLevel
  
 from lnst.Recipes.ENRT.SimpleNetworkRecipe import SimpleNetworkRecipe
-from lnst.Recipes.ENRT.VhostnetPvPRecipe import VhostNetPvPRecipe
+from lnst.Recipes.ENRT.VhostNetPvPRecipe import VhostNetPvPRecipe
 
 
 ctl = Controller(debug=1)
 
 # official_result=no driver=ixgbe trex_dir=/mnt/testarea/trex/ guest_virtname=guest1 guest_hostname=guest1 guest_username=root guest_password=redhat guest_cpus=5,6,7,8 guest_emulatorpin=9 host1_dpdk_cores=2,3,4 host2_dpdk_    lcores=0x400 host2_dpdk_cores=0x1E nr_hugepages=13000 socket_mem=2048 pkt_size=64 test_runs=5 test_duration=60 product_name=RHEL7-OvS2.11-fast-datapath-rhel-7-candidate
-guest_name="guest1"
+guest_name="pvp-guest1"
 guest_cpus="5,6,7,8" # cpu pinning: index is the vcpu
 guest_emulatorpin_cpu="9"
 guest_mem_size=16777216  # FIXME: For some reason if 4GB are configured the guest crashes :/ 
