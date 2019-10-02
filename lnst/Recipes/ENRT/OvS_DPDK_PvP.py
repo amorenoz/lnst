@@ -1,4 +1,3 @@
-import logging
 import time
 import signal
 import xml.etree.ElementTree as ET
@@ -19,7 +18,6 @@ from lnst.RecipeCommon.Perf.Measurements import StatCPUMeasurement
 
 from lnst.RecipeCommon.LibvirtControl import LibvirtControl
 
-from lnst.Recipes.ENRT.BaseEnrtRecipe import EnrtConfiguration
 
 class PvPTestConf(object):
     class HostConf(object):
