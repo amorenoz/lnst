@@ -138,6 +138,8 @@ class TRexServer(TRexCommon):
 
         with tempfile.NamedTemporaryFile(mode="w+") as cfg_file:
             yaml.dump(trex_server_conf, cfg_file)
+            print('------config --------')
+            print(yaml.dump(trex_server_conf))
             cfg_file.flush()
             os.fsync(cfg_file.file.fileno())
 
@@ -145,7 +147,7 @@ class TRexServer(TRexCommon):
             server = subprocess.Popen(
                     [os.path.join(self.params.trex_dir, "t-rex-64"),
                         "--cfg", cfg_file.name, "-i"],
-                    stdin=open('/dev/null'), stdout=open('/dev/null','w'),
+                    stdin=open('/dev/null'), stdout=open('/tmp/trex.out','w'),
                     stderr=subprocess.PIPE, close_fds=True)
 
             self.wait_for_interrupt()
